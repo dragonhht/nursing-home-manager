@@ -1,5 +1,6 @@
 package com.github.dragonhht.manager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,5 +29,6 @@ public class NursRecord implements Serializable {
     private NursProject project;
     @OneToOne
     @JoinColumn(name = "personId")
+    @JsonIgnore
     private Person person;
 }

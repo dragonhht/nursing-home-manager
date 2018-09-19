@@ -1,5 +1,6 @@
 package com.github.dragonhht.manager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,8 +27,9 @@ public class PayDetails implements Serializable {
     private Date time;
     private int price;
     /** 缴费状态， true为未交费. */
-    private boolean status;;
+    private boolean status;
     @ManyToOne
     @JoinColumn(name = "personId")
+    @JsonIgnore
     private Person person;
 }

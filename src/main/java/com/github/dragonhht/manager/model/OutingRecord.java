@@ -1,5 +1,6 @@
 package com.github.dragonhht.manager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,5 +30,6 @@ public class OutingRecord implements Serializable {
     private int price;
     @ManyToOne
     @JoinColumn(name = "personId")
+    @JsonIgnore
     private Person person;
 }
