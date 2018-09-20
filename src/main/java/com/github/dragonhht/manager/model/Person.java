@@ -41,4 +41,9 @@ public class Person implements Serializable {
     @OneToMany
     @JoinColumn(name = "personId")
     private Set<PayDetails> payDetails;
+    @ManyToMany
+    @JoinTable(name = "apply_person", joinColumns = {@JoinColumn(name = "personId")},
+            inverseJoinColumns = {@JoinColumn(name = "applyId")})
+    @JsonIgnore
+    private Set<ApplyForm> applys;
 }

@@ -29,5 +29,10 @@ public class Family implements Serializable {
     @JoinColumn(name = "familyId")
     @JsonIgnore
     private Set<Person> persons;
-
+    @JsonBackReference
+    private String password;
+    @OneToMany
+    @JoinColumn(name = "familyId")
+    @JsonIgnore
+    private Set<ApplyForm> applys;
 }
