@@ -1,9 +1,9 @@
 package com.github.dragonhht.manager.controller.base;
 
-import com.github.dragonhht.manager.model.Family;
 import com.github.dragonhht.manager.service.base.BaseService;
 import com.github.dragonhht.manager.vo.ReturnData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 

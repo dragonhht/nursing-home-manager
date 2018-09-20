@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/family")
-public class FimalyController extends BaseController<Family, Integer> {
+public class FamilyController extends BaseController<Family, Integer> {
 
     @Autowired
     private FamilyService familyService;
