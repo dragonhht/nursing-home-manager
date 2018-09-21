@@ -19,4 +19,5 @@ public class FamilyController extends BaseController<Family, Integer> {
     @Autowired
     private FamilyService familyService;
 
+
 }

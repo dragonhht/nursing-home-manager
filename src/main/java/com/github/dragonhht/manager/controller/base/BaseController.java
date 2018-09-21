@@ -1,9 +1,10 @@
 package com.github.dragonhht.manager.controller.base;
 
+import com.github.dragonhht.manager.params.Code;
 import com.github.dragonhht.manager.service.base.BaseService;
 import com.github.dragonhht.manager.vo.ReturnData;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,18 +29,18 @@ public abstract class BaseController<T, R> {
     @GetMapping("/{id}")
     public ReturnData<Optional<T>> findById(@PathVariable("id") R id) throws Exception {
         Optional<T> family = baseService.findById(id);
-        return new ReturnData<>(200, family);
+        return new ReturnData<>(Code.SUCCESS, family);
     }
 
     @PostMapping
     public ReturnData<T> save(@RequestBody T family) throws Exception {
         T data = baseService.save(family);
-        return new ReturnData<>(200, data);
+        return new ReturnData<>(Code.SUCCESS, data);
     }
 
     @DeleteMapping
     public ReturnData<Boolean> delete(R id) throws Exception {
         baseService.delete(id);
-        return new ReturnData<>(200, true);
+        return new ReturnData<>(Code.SUCCESS, true);
     }
 }
