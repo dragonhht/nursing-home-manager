@@ -1,5 +1,7 @@
 package com.github.dragonhht.manager.config;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -26,9 +28,20 @@ public class ShiroConfig {
     }
 
     @Bean
-    public SecurityManager securityManager() {
-        SecurityManager securityManager =  new DefaultWebSecurityManager();
+    public SecurityManager securityManager(ShiroRealm shiroRealm) {
+        DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
+        shiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        securityManager.setRealm(shiroRealm);
+        SecurityUtils.setSecurityManager(securityManager);
         return securityManager;
+    }
+
+    @Bean
+    public HashedCredentialsMatcher hashedCredentialsMatcher() {
+        HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
+        matcher.setHashAlgorithmName("md5");
+        matcher.setHashIterations(1);
+        return matcher;
     }
 
     @Bean

@@ -15,20 +15,12 @@ import java.util.Set;
  */
 @Entity
 @Data
-public class Family extends BaseRole implements Serializable {
+public class Employee extends BaseRole implements Serializable {
 
     private static final long serialVersionUID = 1304993116620662268L;
 
     private String name;
     private String phone;
     private String address;
-    /** 老人. */
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "familyId")
-    @JsonBackReference
-    private Set<Person> persons;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "familyId")
-    @JsonBackReference
-    private Set<ApplyForm> applys;
+
 }
