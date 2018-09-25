@@ -23,6 +23,7 @@ public class NursRecord implements Serializable {
     private int id;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date time;
+    private int price;
     /** 护理项目. */
     @OneToOne
     @JoinColumn(name = "nursId")

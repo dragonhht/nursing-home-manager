@@ -3,11 +3,9 @@ package com.github.dragonhht.manager.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * 床位.
@@ -25,9 +23,10 @@ public class Bed implements Serializable {
     private boolean isDouble;
     /** 是否入住. */
     private boolean isUsed;
-    @OneToOne(mappedBy = "bed")
+    @OneToMany
+    @JoinColumn(name = "bedId")
     @JsonIgnore
-    private BedRecord record;
+    private Set<BedRecord> bedRecords;
     /** 费用. */
     private int price;
 }

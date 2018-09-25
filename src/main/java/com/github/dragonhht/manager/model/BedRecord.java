@@ -27,10 +27,10 @@ public class BedRecord implements Serializable {
     private Date endDate;
     /** 现在使用的记录. */
     private boolean isUsed;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "bedId")
     private Bed bed;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "personId")
     @JsonIgnore
     private Person person;

@@ -31,8 +31,9 @@ public class Person implements Serializable {
     @ManyToOne
     @JoinColumn(name = "familyId")
     private Family family;
-    @OneToOne(mappedBy = "person")
-    private BedRecord record;
+    @OneToMany
+    @JoinColumn(name = "personId")
+    private Set<BedRecord> bedRecords;
     @OneToMany
     @JoinColumn(name = "personId")
     private Set<OutingRecord> outingRecords;
