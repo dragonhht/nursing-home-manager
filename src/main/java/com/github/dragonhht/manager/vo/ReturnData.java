@@ -16,6 +16,6 @@ import java.io.Serializable;
 public class ReturnData<T> implements Serializable {
 
     private static final long serialVersionUID = -7633763763750450945L;
-    private Code code;
+    private int code;
     private T data;
 }

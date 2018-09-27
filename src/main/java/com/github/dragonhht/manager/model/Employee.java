@@ -2,6 +2,8 @@ package com.github.dragonhht.manager.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,12 +17,15 @@ import java.util.Set;
  */
 @Entity
 @Data
+@ApiModel("员工实体")
 public class Employee extends BaseRole implements Serializable {
 
     private static final long serialVersionUID = 1304993116620662268L;
-
+    @ApiModelProperty("姓名")
     private String name;
+    @ApiModelProperty("手机号码")
     private String phone;
+    @ApiModelProperty("住址")
     private String address;
 
 }
