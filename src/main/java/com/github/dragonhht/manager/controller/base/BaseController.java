@@ -6,15 +6,11 @@ import com.github.dragonhht.manager.util.ReturnDataUtils;
 import com.github.dragonhht.manager.vo.ReturnData;
 import io.swagger.annotations.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-
-import static com.github.dragonhht.manager.params.Code.NOT_LOGIN;
-import static com.github.dragonhht.manager.params.Code.getCode;
 
 /**
  * 基本Controller.
@@ -27,7 +23,7 @@ public abstract class BaseController<T, R> {
     @Autowired
     private BaseService<T, R> baseService;
 
-    @ApiOperation("获取数据")
+    @ApiOperation(value = "获取数据", notes = "分页获取数据")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "page", dataType = "int",
                     required = true, value = "页码", defaultValue = "0"),
@@ -46,6 +42,13 @@ public abstract class BaseController<T, R> {
         return baseService.findAllByPage(page, size);
     }
 
+    @ApiOperation(value = "通过Id获取数据", notes = "获取指定id的数据")
+    @ApiResponses(value = {
+            @ApiResponse(code = 801, message = "未登录"),
+            @ApiResponse(code = 200, message = "成功"),
+            @ApiResponse(code = 701, message = "失败"),
+            @ApiResponse(code = 401, message = "未授权")
+    })
     @GetMapping("/{id}")
     public ReturnData<Optional<T>> findById(@PathVariable("id") R id) throws Exception {
         Optional<T> family = baseService.findById(id);

@@ -17,3 +17,6 @@ spring:
     rest:
       base-path: /api
 
+jwt:
+  secret: nures
+

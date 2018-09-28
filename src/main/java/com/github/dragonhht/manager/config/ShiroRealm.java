@@ -2,6 +2,7 @@ package com.github.dragonhht.manager.config;
 
 import com.github.dragonhht.manager.params.Salt;
 import com.github.dragonhht.manager.repository.BaseRoleRepository;
+import com.github.dragonhht.manager.util.JWTUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -50,12 +51,13 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        Long id = (Long) token.getPrincipal();
+        String userId = (String) token.getPrincipal();
+        long id = Long.parseLong(userId);
         String password = getPasswordById(id);
         if (password == null) {
             return null;
         }
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(id, password, "shiroRealm");
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(String.valueOf(id), password, "shiroRealm");
         info.setCredentialsSalt(ByteSource.Util.bytes(Salt.SALT));
         return info;
     }
