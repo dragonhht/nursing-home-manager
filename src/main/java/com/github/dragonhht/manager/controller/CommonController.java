@@ -45,7 +45,7 @@ public class CommonController {
     public ReturnData<String> login(Long userId, String password, String role) throws Exception {
         Subject subject = SecurityUtils.getSubject();
         PasswordUtil util = PasswordUtil.getInstance();
-        password = util.encryption(password);
+        //password = util.encryption(password);
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(String.valueOf(userId), password);
         try {
             subject.login(usernamePasswordToken);
@@ -54,6 +54,7 @@ public class CommonController {
             String token = jwtUtils.createTocken(String.valueOf(userId), times, null, roles);
             return ReturnDataUtils.returnDate(Code.SUCCESS, token);
         } catch (Exception e) {
+            e.printStackTrace();
             return ReturnDataUtils.returnDate(Code.FAILED, "登录失败");
         }
 

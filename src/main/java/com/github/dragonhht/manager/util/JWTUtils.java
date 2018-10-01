@@ -32,7 +32,8 @@ public class JWTUtils {
      * @return token
      */
     public String createTocken(String id, long issued, String subject, Set<String> roles) {
-        String[] tokenRoles = (String[]) roles.toArray();
+        String[] tokenRoles = new String[0];
+        tokenRoles = roles.toArray(tokenRoles);
         String token = "";
         try {
             Algorithm algorithm = Algorithm.HMAC256(secript);
