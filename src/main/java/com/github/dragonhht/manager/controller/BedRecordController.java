@@ -13,4 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/bedRecord")
 public class BedRecordController extends BaseController<BedRecord, Integer> {
+
+
+
 }

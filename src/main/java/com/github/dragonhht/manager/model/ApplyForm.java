@@ -1,7 +1,9 @@
 package com.github.dragonhht.manager.model;
 
+import com.github.dragonhht.manager.params.FormStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +15,7 @@ import java.util.Set;
  * Date: 18-9-20
  */
 @Entity
+@Data
 @ApiModel("申请表")
 public class ApplyForm implements Serializable {
     private static final long serialVersionUID = 2348747044382379540L;
@@ -35,5 +38,5 @@ public class ApplyForm implements Serializable {
     @ApiModelProperty("身体状况")
     private String physical;
     @ApiModelProperty("审核状态")
-    private String status;
+    private FormStatus status;
 }

@@ -2,7 +2,6 @@ package com.github.dragonhht.manager.config;
 
 import com.github.dragonhht.manager.params.Salt;
 import com.github.dragonhht.manager.repository.BaseRoleRepository;
-import com.github.dragonhht.manager.util.JWTUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

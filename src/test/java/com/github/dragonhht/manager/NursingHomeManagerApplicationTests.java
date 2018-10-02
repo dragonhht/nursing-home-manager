@@ -1,7 +1,10 @@
 package com.github.dragonhht.manager;
 
+import com.github.dragonhht.manager.model.ApplyForm;
 import com.github.dragonhht.manager.model.Employee;
+import com.github.dragonhht.manager.model.Family;
 import com.github.dragonhht.manager.model.Role;
+import com.github.dragonhht.manager.params.FormStatus;
 import com.github.dragonhht.manager.repository.*;
 import com.github.dragonhht.manager.util.PasswordUtil;
 import org.junit.Test;
@@ -28,10 +31,12 @@ public class NursingHomeManagerApplicationTests {
 	private EmployeeRepository employeeRepository;
 	@Autowired
     private RoleRepository roleRepository;
+	@Autowired
+	private ApplyFormRepository applyFormRepository;
 
 	@Test
 	public void contextLoads() {
-		Employee family = new Employee();
+		Family family = new Family();
 		family.setAddress("中国");
 		family.setName("家属");
 		family.setPhone("12345678901");
@@ -41,7 +46,7 @@ public class NursingHomeManagerApplicationTests {
 		roles.add(new Role("USER"));
 		roles.add(new Role("ADMIN"));
 		family.setRoles(roles);
-		employeeRepository.save(family);
+		familyRepository.save(family);
 	}
 
 	@Test
@@ -64,6 +69,19 @@ public class NursingHomeManagerApplicationTests {
 	public void deBase() {
 		String str = "eyJyb2xlcyI6WyJBRE1JTiIsIlVTRVIiXSwiaXNzIjoiMyIsImlhdCI6MTUzODQwNTk2NH0";
 		System.out.println(new String(Base64Utils.decode(str.getBytes())));
+	}
+
+	@Test
+	public void testForm() {
+		ApplyForm form = new ApplyForm();
+		form.setAge(80);
+		form.setName("测试");
+		form.setPhysical("健康");
+		form.setStatus(FormStatus.DRAFT);
+		Family family = new Family();
+		family.setId(4l);
+		form.setFamily(family);
+		applyFormRepository.save(form);
 	}
 
 }
