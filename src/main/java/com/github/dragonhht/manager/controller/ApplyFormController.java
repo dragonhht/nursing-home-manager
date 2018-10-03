@@ -45,7 +45,7 @@ public class ApplyFormController extends BaseController<ApplyForm, Integer> {
      * @param size
      * @return
      */
-    //@RequiresRoles("EMPLOYEE")
+    @RequiresRoles("EMPLOYEE")
     @GetMapping("/select")
     public Page<ApplyForm> selectFormByStatus(@RequestParam("status") FormStatus status,
                   @RequestParam(name = "page", defaultValue = "0", required = false) int page,
