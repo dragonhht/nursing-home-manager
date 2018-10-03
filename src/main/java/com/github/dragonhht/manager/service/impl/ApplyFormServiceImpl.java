@@ -46,8 +46,7 @@ public class ApplyFormServiceImpl extends BaseServiceImp<ApplyForm, Integer> imp
         if (limit == 0)
             limit = DEFAULT_PAGE_SIZE;
         Pageable pageable = new PageRequest(pageNum, limit);
-        Page<ApplyForm> forms = applyFormRepository.findApplyFormByStatus(status, pageable);
-        System.out.println(forms.getContent());
-        return null;
+        Page<ApplyForm> forms = applyFormRepository.findApplyFormByStatusIs(status, pageable);
+        return forms;
     }
 }

@@ -16,7 +16,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(path = "applys")
 public interface ApplyFormRepository extends JpaRepository<ApplyForm, Integer> {
 
-    @Query("select a from ApplyForm a where a.status = ?1")
-    Page<ApplyForm> findApplyFormByStatus(FormStatus status, Pageable pageable);
+    //@Query("select a from ApplyForm a where a.status = ?1")
+    Page<ApplyForm> findApplyFormByStatusIs(FormStatus status, Pageable pageable);
 
 }

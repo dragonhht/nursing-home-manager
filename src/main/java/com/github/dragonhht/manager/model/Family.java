@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,7 +18,8 @@ import java.util.Set;
  * Date: 18-9-16
  */
 @Entity
-@Data
+@Getter
+@Setter
 @ApiModel("家属实体")
 public class Family extends BaseRole implements Serializable {
 
