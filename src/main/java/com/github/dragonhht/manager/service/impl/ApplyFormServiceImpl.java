@@ -49,4 +49,13 @@ public class ApplyFormServiceImpl extends BaseServiceImp<ApplyForm, Integer> imp
         Page<ApplyForm> forms = applyFormRepository.findApplyFormByStatusIs(status, pageable);
         return forms;
     }
+
+    @Override
+    public boolean updateStatus(FormStatus status, int id) {
+        boolean ok = false;
+        int n = applyFormRepository.updateStatus(status, id);
+        if (n > 0)
+            ok = true;
+        return ok;
+    }
 }

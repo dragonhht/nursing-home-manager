@@ -16,4 +16,6 @@ public interface ApplyFormService {
 
     Page<ApplyForm> findApplyFormsByStatus(int pageNum, int limit, FormStatus status);
 
+    boolean updateStatus(FormStatus status, int id);
+
 }

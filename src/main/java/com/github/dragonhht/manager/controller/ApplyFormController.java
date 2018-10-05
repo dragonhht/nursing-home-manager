@@ -11,6 +11,7 @@ import com.github.dragonhht.manager.vo.ReturnData;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -53,5 +54,11 @@ public class ApplyFormController extends BaseController<ApplyForm, Integer> {
         return  applyFormService.findApplyFormsByStatus(page, size, status);
     }
 
+
+    @PostMapping("/status/update/")
+    public ReturnData<Boolean> updateStatus(@RequestParam("status") FormStatus status, @RequestParam("id") int id) {
+        boolean ok = applyFormService.updateStatus(status, id);
+        return ReturnDataUtils.returnDate(Code.SUCCESS, ok);
+    }
 
 }

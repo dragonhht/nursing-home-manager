@@ -47,16 +47,11 @@ public class CommonController {
         PasswordUtil util = PasswordUtil.getInstance();
         //password = util.encryption(password);
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(String.valueOf(userId), password);
-        try {
-            subject.login(usernamePasswordToken);
-            long times = System.currentTimeMillis();
-            Set<String> roles = baseRoleService.getRolesById(userId);
-            String token = jwtUtils.createTocken(String.valueOf(userId), times, null, roles);
-            return ReturnDataUtils.returnDate(Code.SUCCESS, token);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ReturnDataUtils.returnDate(Code.FAILED, "登录失败");
-        }
+        subject.login(usernamePasswordToken);
+        long times = System.currentTimeMillis();
+        Set<String> roles = baseRoleService.getRolesById(userId);
+        String token = jwtUtils.createTocken(String.valueOf(userId), times, null, roles);
+        return ReturnDataUtils.returnDate(Code.SUCCESS, token);
 
     }
 
