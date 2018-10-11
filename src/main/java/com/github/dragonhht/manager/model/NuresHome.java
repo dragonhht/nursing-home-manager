@@ -16,10 +16,15 @@ import java.io.Serializable;
 @Data
 public class NuresHome implements Serializable {
 
+    private static final long serialVersionUID = 3955658250696367395L;
     @Id
     @GeneratedValue
     private int id;
+    /** 养老院名. */
     private String name;
+    /** 详细介绍. */
     private String introduction;
+    /** 入住条件. */
+    private String condition;
 
 }

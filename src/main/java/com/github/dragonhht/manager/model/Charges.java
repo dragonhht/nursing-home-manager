@@ -16,11 +16,15 @@ import java.io.Serializable;
 @Data
 public class Charges implements Serializable {
 
+    private static final long serialVersionUID = 4280584470932045644L;
     @Id
     @GeneratedValue
     private int id;
+    /** 收费项目. */
     private String name;
+    /** 价格. */
     private int price;
+    /** 备注. */
     private String remarks;
 
 }

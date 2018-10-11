@@ -1,7 +1,11 @@
 package com.github.dragonhht.manager.repository;
 
 import com.github.dragonhht.manager.model.RetreatApply;
+import com.github.dragonhht.manager.params.FormStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,4 +15,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RetreatRepository extends JpaRepository<RetreatApply, Integer> {
+
+    Page<RetreatApply> findRetreatAppliesByStatusIs(FormStatus status, Pageable pageable);
+
+    @Query("update RetreatApply set status = ?1 where id = ?2 ")
+    int updateStatus(FormStatus status, int id);
+
 }

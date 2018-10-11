@@ -54,7 +54,7 @@ public class ApplyFormController extends BaseController<ApplyForm, Integer> {
         return  applyFormService.findApplyFormsByStatus(page, size, status);
     }
 
-
+    @RequiresRoles("EMPLOYEE")
     @PostMapping("/status/update/")
     public ReturnData<Boolean> updateStatus(@RequestParam("status") FormStatus status, @RequestParam("id") int id) {
         boolean ok = applyFormService.updateStatus(status, id);

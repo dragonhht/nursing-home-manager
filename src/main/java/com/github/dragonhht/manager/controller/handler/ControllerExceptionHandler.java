@@ -3,7 +3,7 @@ package com.github.dragonhht.manager.controller.handler;
 import com.github.dragonhht.manager.params.Code;
 import com.github.dragonhht.manager.util.ReturnDataUtils;
 import com.github.dragonhht.manager.vo.ReturnData;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * User: huang
  * Date: 18-10-5
  */
-@Log4j2
+@Slf4j
 @RestControllerAdvice
 public class ControllerExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler
     public ReturnData handler(Exception e) {
-        log.error(e);
+        log.error(e.getMessage());
         if (e instanceof UnauthenticatedException) {
             return ReturnDataUtils.returnDate(Code.NOT_LOGIN, "请登录");
         }
