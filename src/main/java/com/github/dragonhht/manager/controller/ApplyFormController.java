@@ -32,7 +32,7 @@ public class ApplyFormController extends BaseController<ApplyForm, Integer> {
      * @return
      * @throws Exception
      */
-    @RequiresRoles("EMPLOYEE")
+    //@RequiresRoles("EMPLOYEE")
     @PostMapping("/save/person")
     public ReturnData<Person> savePersonByForm(int id) throws Exception {
         Person person = applyFormService.savePersonByApply(id);

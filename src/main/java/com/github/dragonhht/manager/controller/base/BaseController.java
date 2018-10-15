@@ -1,15 +1,19 @@
 package com.github.dragonhht.manager.controller.base;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dragonhht.manager.model.ApplyForm;
 import com.github.dragonhht.manager.params.Code;
 import com.github.dragonhht.manager.service.base.BaseService;
+import com.github.dragonhht.manager.util.BeanUtil;
 import com.github.dragonhht.manager.util.ReturnDataUtils;
 import com.github.dragonhht.manager.vo.ReturnData;
 import io.swagger.annotations.*;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Method;
 import java.util.Optional;
 
 /**
@@ -54,18 +58,27 @@ public abstract class BaseController<T, R> {
         Optional<T> family = baseService.findById(id);
         return ReturnDataUtils.returnDate(Code.SUCCESS, family);
     }
-
-    @RequiresPermissions("ADD")
+    //@RequiresRoles("EMPLOYEE")
     @PostMapping
     public ReturnData<T> save(@RequestBody T family) throws Exception {
         T data = baseService.save(family);
         return ReturnDataUtils.returnDate(Code.SUCCESS, data);
     }
 
-    @RequiresPermissions("DELETE")
+    @RequiresRoles("EMPLOYEE")
     @DeleteMapping
     public ReturnData<Boolean> delete(R id) throws Exception {
         baseService.delete(id);
         return ReturnDataUtils.returnDate(Code.SUCCESS, true);
+    }
+
+    @GetMapping("/{id}/s/{attri}")
+    public ReturnData getAllAttri(@RequestParam(name = "page", defaultValue = "0", required = false) int page,
+                            @RequestParam(name = "size", defaultValue = "0", required = false) int size,
+                            @PathVariable(name = "id") R id, @PathVariable(name="attri") String attri) throws Exception {
+        Optional<T> data = baseService.findById(id);
+        Method method = BeanUtil.getField(data.get(), attri);
+        Object obj = BeanUtil.getField(data.get(), method, method.getReturnType());
+        return ReturnDataUtils.returnDate(Code.SUCCESS, obj);
     }
 }

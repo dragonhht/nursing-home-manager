@@ -6,6 +6,7 @@ import com.github.dragonhht.manager.model.Family;
 import com.github.dragonhht.manager.model.Role;
 import com.github.dragonhht.manager.params.FormStatus;
 import com.github.dragonhht.manager.repository.*;
+import com.github.dragonhht.manager.util.BeanUtil;
 import com.github.dragonhht.manager.util.PasswordUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -82,6 +83,12 @@ public class NursingHomeManagerApplicationTests {
 		family.setId(4l);
 		form.setFamily(family);
 		applyFormRepository.save(form);
+	}
+
+	@Test
+	public void beanTest() {
+		String s = BeanUtil.getField(new Family(), "roles").getName();
+        System.out.println(s);
 	}
 
 }

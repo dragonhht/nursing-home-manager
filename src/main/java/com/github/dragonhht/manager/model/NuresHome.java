@@ -25,6 +25,6 @@ public class NuresHome implements Serializable {
     /** 详细介绍. */
     private String introduction;
     /** 入住条件. */
-    private String condition;
+    private String conditions;
 
 }

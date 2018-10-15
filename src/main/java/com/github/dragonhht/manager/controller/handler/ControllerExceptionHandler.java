@@ -20,6 +20,7 @@ public class ControllerExceptionHandler {
     @org.springframework.web.bind.annotation.ExceptionHandler
     public ReturnData handler(Exception e) {
         log.error(e.getMessage());
+        e.printStackTrace();
         if (e instanceof UnauthenticatedException) {
             return ReturnDataUtils.returnDate(Code.NOT_LOGIN, "请登录");
         }
