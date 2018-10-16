@@ -2,8 +2,10 @@ package com.github.dragonhht.manager.controller;
 
 import com.github.dragonhht.manager.controller.base.BaseController;
 import com.github.dragonhht.manager.model.LogRecord;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.github.dragonhht.manager.service.LogRecordService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Description.
@@ -13,4 +15,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/logRecord")
 public class LogRecordController extends BaseController<LogRecord, Integer> {
+
+    @Autowired
+    private LogRecordService logRecordService;
+
+    @GetMapping("/select/by/employee/{id}")
+    public Page<LogRecord> findLogRecordByEmployee(@PathVariable("id") int id,
+                                                   @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+                                                   @RequestParam(name = "size", defaultValue = "0", required = false) int sizie) {
+        return logRecordService.findLogRecordByEmployee(id, page, sizie);
+    }
+
+    @GetMapping("/select/by/person/{id}")
+    public Page<LogRecord> findLogRecordByPerson(@PathVariable("id") int id,
+                                                   @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+                                                   @RequestParam(name = "size", defaultValue = "0", required = false) int sizie) {
+        return logRecordService.findLogRecordByPerson(id, page, sizie);
+    }
+
 }

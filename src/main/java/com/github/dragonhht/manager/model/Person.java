@@ -39,20 +39,20 @@ public class Person implements Serializable {
     @JoinColumn(name = "familyId")
     @ApiModelProperty("家属")
     private Family family;
-    @OneToMany
+/*    @OneToMany
     @JoinColumn(name = "personId")
     @ApiModelProperty("床位记录")
-    private Set<BedRecord> bedRecords;
-    @OneToMany
+    private Set<BedRecord> bedRecords;*/
+/*    @OneToMany
     @JoinColumn(name = "personId")
     @ApiModelProperty("外出记录")
-    private Set<OutingRecord> outingRecords;
-    @OneToOne(mappedBy = "person")
-    private NursRecord nursRecord;
-    @OneToMany
+    private Set<OutingRecord> outingRecords;*/
+/*    @OneToOne(mappedBy = "person")
+    private NursRecord nursRecord;*/
+/*    @OneToMany
     @JoinColumn(name = "personId")
     @ApiModelProperty("缴费记录")
-    private Set<PayDetails> payDetails;
+    private Set<PayDetails> payDetails;*/
     @ManyToMany
     @JoinTable(name = "apply_person", joinColumns = {@JoinColumn(name = "personId")},
             inverseJoinColumns = {@JoinColumn(name = "applyId")})

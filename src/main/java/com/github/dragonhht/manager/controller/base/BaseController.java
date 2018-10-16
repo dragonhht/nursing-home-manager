@@ -72,7 +72,7 @@ public abstract class BaseController<T, R> {
         return ReturnDataUtils.returnDate(Code.SUCCESS, true);
     }
 
-    @GetMapping("/{id}/s/{attri}")
+/*    @GetMapping("/{id}/s/{attri}")
     public ReturnData getAllAttri(@RequestParam(name = "page", defaultValue = "0", required = false) int page,
                             @RequestParam(name = "size", defaultValue = "0", required = false) int size,
                             @PathVariable(name = "id") R id, @PathVariable(name="attri") String attri) throws Exception {
@@ -80,5 +80,5 @@ public abstract class BaseController<T, R> {
         Method method = BeanUtil.getField(data.get(), attri);
         Object obj = BeanUtil.getField(data.get(), method, method.getReturnType());
         return ReturnDataUtils.returnDate(Code.SUCCESS, obj);
-    }
+    }*/
 }

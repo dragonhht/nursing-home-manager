@@ -46,7 +46,7 @@ public class ApplyFormController extends BaseController<ApplyForm, Integer> {
      * @param size
      * @return
      */
-    @RequiresRoles("EMPLOYEE")
+    //@RequiresRoles("EMPLOYEE")
     @GetMapping("/select")
     public Page<ApplyForm> selectFormByStatus(@RequestParam("status") FormStatus status,
                   @RequestParam(name = "page", defaultValue = "0", required = false) int page,
@@ -54,11 +54,25 @@ public class ApplyFormController extends BaseController<ApplyForm, Integer> {
         return  applyFormService.findApplyFormsByStatus(page, size, status);
     }
 
-    @RequiresRoles("EMPLOYEE")
+    //@RequiresRoles("EMPLOYEE")
     @PostMapping("/status/update/")
     public ReturnData<Boolean> updateStatus(@RequestParam("status") FormStatus status, @RequestParam("id") int id) {
         boolean ok = applyFormService.updateStatus(status, id);
         return ReturnDataUtils.returnDate(Code.SUCCESS, ok);
+    }
+
+    /**
+     * 通过家属查询申请表
+     * @param id
+     * @param page
+     * @param size
+     * @return
+     */
+    @GetMapping("/select/by/family/{id}")
+    public Page<ApplyForm> selectByFamily(@PathVariable("id") int id,
+                                          @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+                                          @RequestParam(name = "size", defaultValue = "0", required = false) int size) {
+        return applyFormService.findApplyFormsByFamilyId(id, page, size);
     }
 
 }

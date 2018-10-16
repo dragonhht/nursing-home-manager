@@ -5,10 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -32,11 +29,11 @@ public class Bed implements Serializable {
     /** 是否入住. */
     @ApiModelProperty("是否已使用")
     private boolean isUsed;
-    @OneToMany
+/*    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "bedId")
     @JsonIgnore
     @ApiModelProperty("床位使用记录")
-    private Set<BedRecord> bedRecords;
+    private Set<BedRecord> bedRecords;*/
     /** 费用. */
     @ApiModelProperty("价格")
     private int price;

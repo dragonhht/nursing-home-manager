@@ -18,4 +18,6 @@ public interface ApplyFormService {
 
     boolean updateStatus(FormStatus status, int id);
 
+    Page<ApplyForm> findApplyFormsByFamilyId(int id, int pageNum, int limit);
+
 }

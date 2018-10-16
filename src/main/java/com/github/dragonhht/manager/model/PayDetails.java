@@ -38,7 +38,6 @@ public class PayDetails implements Serializable {
     private boolean status;
     @ManyToOne
     @JoinColumn(name = "personId")
-    @JsonIgnore
     @ApiModelProperty("老人")
     private Person person;
 }

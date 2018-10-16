@@ -31,14 +31,14 @@ public class Family extends BaseRole implements Serializable {
     @ApiModelProperty("地址")
     private String address;
     /** 老人. */
-    @OneToMany(fetch = FetchType.EAGER)
+/*    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "familyId")
     @JsonIgnore
     @ApiModelProperty("关联的老人")
-    private Set<Person> persons;
-    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Person> persons;*/
+/*    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "familyId")
     @JsonIgnore
     @ApiModelProperty("提交的申请")
-    private Set<ApplyForm> applys;
+    private Set<ApplyForm> applys;*/
 }

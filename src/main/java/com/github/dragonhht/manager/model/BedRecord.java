@@ -40,7 +40,6 @@ public class BedRecord implements Serializable {
     private Bed bed;
     @ManyToOne
     @JoinColumn(name = "personId")
-    @JsonIgnore
     @ApiModelProperty("老人")
     private Person person;
 

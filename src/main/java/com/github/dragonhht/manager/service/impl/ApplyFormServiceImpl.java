@@ -58,4 +58,13 @@ public class ApplyFormServiceImpl extends BaseServiceImp<ApplyForm, Integer> imp
             ok = true;
         return ok;
     }
+
+    @Override
+    public Page<ApplyForm> findApplyFormsByFamilyId(int id, int pageNum, int limit) {
+        if (limit == 0)
+            limit = DEFAULT_PAGE_SIZE;
+        Pageable pageable = new PageRequest(pageNum, limit);
+        Page<ApplyForm> forms = applyFormRepository.findApplyFormByFamilyId(id, pageable);
+        return forms;
+    }
 }

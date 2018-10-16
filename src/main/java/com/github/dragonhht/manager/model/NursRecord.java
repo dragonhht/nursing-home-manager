@@ -37,7 +37,6 @@ public class NursRecord implements Serializable {
     private NursProject project;
     @OneToOne
     @JoinColumn(name = "personId")
-    @JsonIgnore
     @ApiModelProperty("接受护理的老人")
     private Person person;
 }

@@ -26,7 +26,7 @@ public class NursProject implements Serializable {
     private String name;
     @ApiModelProperty("价格")
     private int price;
-    @OneToOne(mappedBy = "project")
+/*    @OneToOne(mappedBy = "project")
     @ApiModelProperty("护理记录")
-    private NursRecord record;
+    private NursRecord record;*/
 }

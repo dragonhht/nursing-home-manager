@@ -1,6 +1,5 @@
 package com.github.dragonhht.manager.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -38,7 +37,6 @@ public class OutingRecord implements Serializable {
     private int price;
     @ManyToOne
     @JoinColumn(name = "personId")
-    @JsonIgnore
     @ApiModelProperty("老人")
     private Person person;
 }

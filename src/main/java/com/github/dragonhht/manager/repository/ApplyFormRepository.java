@@ -21,4 +21,7 @@ public interface ApplyFormRepository extends JpaRepository<ApplyForm, Integer> {
 
     @Query("update ApplyForm set status = ?1 where id = ?2 ")
     int updateStatus(FormStatus status, int id);
+
+    @Query("select a from ApplyForm a where a.family.id = ?1")
+    Page<ApplyForm> findApplyFormByFamilyId(int id, Pageable pageable);
 }
