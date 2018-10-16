@@ -24,7 +24,7 @@ public class BaseRole implements Serializable {
     @Id
     @GeneratedValue
     @ApiModelProperty("编号")
-    private Long id;
+    private Integer id;
     @JsonBackReference
     @ApiModelProperty("密码")
     private String password;

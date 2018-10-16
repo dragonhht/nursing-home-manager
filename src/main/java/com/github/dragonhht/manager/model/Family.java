@@ -33,12 +33,12 @@ public class Family extends BaseRole implements Serializable {
     /** 老人. */
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "familyId")
-    @JsonBackReference
+    @JsonIgnore
     @ApiModelProperty("关联的老人")
     private Set<Person> persons;
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "familyId")
-    @JsonBackReference
+    @JsonIgnore
     @ApiModelProperty("提交的申请")
     private Set<ApplyForm> applys;
 }

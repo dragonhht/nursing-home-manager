@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Repository;
  * Date: 18-10-5
  */
 @Repository
+@RepositoryRestResource(path = "retreat")
 public interface RetreatRepository extends JpaRepository<RetreatApply, Integer> {
 
     Page<RetreatApply> findRetreatAppliesByStatusIs(FormStatus status, Pageable pageable);

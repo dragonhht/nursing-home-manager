@@ -80,7 +80,7 @@ public class NursingHomeManagerApplicationTests {
 		form.setPhysical("健康");
 		form.setStatus(FormStatus.DRAFT);
 		Family family = new Family();
-		family.setId(4l);
+		family.setId(4);
 		form.setFamily(family);
 		applyFormRepository.save(form);
 	}
