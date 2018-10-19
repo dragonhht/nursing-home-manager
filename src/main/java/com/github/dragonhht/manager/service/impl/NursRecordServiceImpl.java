@@ -23,18 +23,20 @@ public class NursRecordServiceImpl extends BaseServiceImp<NursRecord, Integer> i
 
 
     @Override
-    public Page<NursRecord> findLogRecordByProject(int id, int pageNum, int limit) {
-        if (limit == 0)
+    public Page<NursRecord> findRecordByProject(int id, int pageNum, int limit) {
+        if (limit == 0) {
             limit = DEFAULT_PAGE_SIZE;
+        }
         Pageable pageable = new PageRequest(pageNum, limit);
         Page<NursRecord> forms = nursRecordRepository.findNursRecordByNures(id, pageable);
         return forms;
     }
 
     @Override
-    public Page<NursRecord> findLogRecordByPerson(int id, int pageNum, int limit) {
-        if (limit == 0)
+    public Page<NursRecord> findRecordByPerson(int id, int pageNum, int limit) {
+        if (limit == 0) {
             limit = DEFAULT_PAGE_SIZE;
+        }
         Pageable pageable = new PageRequest(pageNum, limit);
         Page<NursRecord> forms = nursRecordRepository.findNursRecordByPerson(id, pageable);
         return forms;

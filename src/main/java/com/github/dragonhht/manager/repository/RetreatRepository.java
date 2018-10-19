@@ -23,4 +23,7 @@ public interface RetreatRepository extends JpaRepository<RetreatApply, Integer> 
     @Query("update RetreatApply set status = ?1 where id = ?2 ")
     int updateStatus(FormStatus status, int id);
 
+    @Query("select n from RetreatApply n where n.person.id = ?1")
+    Page<RetreatApply> findRecordByPerson(int id, Pageable pageable);
+
 }

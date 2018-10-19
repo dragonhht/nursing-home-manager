@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
  */
 public interface NursRecordService {
 
-    Page<NursRecord> findLogRecordByProject(int id, int pageNum, int limit);
+    Page<NursRecord> findRecordByProject(int id, int pageNum, int limit);
 
-    Page<NursRecord> findLogRecordByPerson(int id, int pageNum, int limit);
+    Page<NursRecord> findRecordByPerson(int id, int pageNum, int limit);
 }

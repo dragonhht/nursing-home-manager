@@ -28,8 +28,8 @@ public class LogRecordController extends BaseController<LogRecord, Integer> {
 
     @GetMapping("/select/by/person/{id}")
     public Page<LogRecord> findLogRecordByPerson(@PathVariable("id") int id,
-                                                   @RequestParam(name = "page", defaultValue = "0", required = false) int page,
-                                                   @RequestParam(name = "size", defaultValue = "0", required = false) int sizie) {
+                                                 @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+                                                 @RequestParam(name = "size", defaultValue = "0", required = false) int sizie) {
         return logRecordService.findLogRecordByPerson(id, page, sizie);
     }
 
