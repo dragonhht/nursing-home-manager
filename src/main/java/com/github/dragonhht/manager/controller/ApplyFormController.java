@@ -55,7 +55,7 @@ public class ApplyFormController extends BaseController<ApplyForm, Integer> {
     }
 
     //@RequiresRoles("EMPLOYEE")
-    @PostMapping("/status/update/")
+    @PostMapping("/status/update")
     public ReturnData<Boolean> updateStatus(@RequestParam("status") FormStatus status, @RequestParam("id") int id) {
         boolean ok = applyFormService.updateStatus(status, id);
         return ReturnDataUtils.returnDate(Code.SUCCESS, ok);
