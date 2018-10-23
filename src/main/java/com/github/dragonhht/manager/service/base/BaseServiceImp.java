@@ -50,8 +50,9 @@ public abstract class BaseServiceImp<T, R> implements BaseService<T, R>  {
 
     @Override
     public Page<T> findAllByPage(int pageNum, int limit) throws Exception {
-        if (limit == 0)
+        if (limit == 0) {
             limit = DEFAULT_PAGE_SIZE;
+        }
         Pageable pageable = new PageRequest(pageNum, limit);
         return repository.findAll(pageable);
     }

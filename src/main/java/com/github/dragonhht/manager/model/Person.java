@@ -53,10 +53,9 @@ public class Person implements Serializable {
     @JoinColumn(name = "personId")
     @ApiModelProperty("缴费记录")
     private Set<PayDetails> payDetails;*/
-    @ManyToMany
+    /*@ManyToMany
     @JoinTable(name = "apply_person", joinColumns = {@JoinColumn(name = "personId")},
             inverseJoinColumns = {@JoinColumn(name = "applyId")})
-    @JsonIgnore
     @ApiModelProperty("相关申请记录")
-    private Set<ApplyForm> applys;
+    private Set<ApplyForm> applys;*/
 }

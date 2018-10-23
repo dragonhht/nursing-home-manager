@@ -47,4 +47,11 @@ public class RetreatController extends BaseController<RetreatApply, Integer> {
         return ReturnDataUtils.returnDate(Code.SUCCESS, ok);
     }
 
+    @GetMapping("/select/by/person/{id}")
+    public Page<RetreatApply> findRecordByPerson(@PathVariable("id") int id,
+                                               @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+                                               @RequestParam(name = "size", defaultValue = "0", required = false) int sizie) {
+        return retreatService.findRecordByPerson(id, page, sizie);
+    }
+
 }

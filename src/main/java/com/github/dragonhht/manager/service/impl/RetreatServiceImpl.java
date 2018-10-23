@@ -41,4 +41,14 @@ public class RetreatServiceImpl extends BaseServiceImp<RetreatApply, Integer> im
             ok = true;
         return ok;
     }
+
+    @Override
+    public Page<RetreatApply> findRecordByPerson(int id, int pageNum, int limit) {
+        if (limit == 0) {
+            limit = DEFAULT_PAGE_SIZE;
+        }
+        Pageable pageable = new PageRequest(pageNum, limit);
+        Page<RetreatApply> forms = retreatRepository.findRecordByPerson(id, pageable);
+        return forms;
+    }
 }

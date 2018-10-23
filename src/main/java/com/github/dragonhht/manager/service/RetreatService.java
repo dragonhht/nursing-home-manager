@@ -16,4 +16,6 @@ public interface RetreatService {
 
     boolean updateStatus(FormStatus status, int id);
 
+    Page<RetreatApply> findRecordByPerson(int id, int pageNum, int limit);
+
 }
