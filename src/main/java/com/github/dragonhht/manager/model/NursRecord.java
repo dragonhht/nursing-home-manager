@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 护理记录.
@@ -39,4 +40,12 @@ public class NursRecord implements Serializable {
     @JoinColumn(name = "personId")
     @ApiModelProperty("接受护理的老人")
     private Person person;
+    @OneToMany
+    @JoinColumn(name = "employeeId")
+    @ApiModelProperty("护理员工")
+    private Set<Employee> employees;
+    @OneToOne
+    @JoinColumn(name = "createId")
+    @ApiModelProperty("记录填写人")
+    private Employee employee;
 }

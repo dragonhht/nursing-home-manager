@@ -20,4 +20,7 @@ public interface PayDetailsRepository extends JpaRepository<PayDetails, Integer>
     @Query("select n from PayDetails n where n.person.id = ?1")
     Page<PayDetails> findRecordByPerson(int id, Pageable pageable);
 
+    @Query("select n from PayDetails n where n.employee.id = ?1")
+    Page<PayDetails> findRecordByEmployee(int id, Pageable pageable);
+
 }

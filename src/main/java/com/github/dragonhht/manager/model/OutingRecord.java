@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 外出记录.
@@ -39,4 +40,12 @@ public class OutingRecord implements Serializable {
     @JoinColumn(name = "personId")
     @ApiModelProperty("老人")
     private Person person;
+    @OneToMany
+    @JoinColumn(name = "employeeId")
+    @ApiModelProperty("陪同员工")
+    private Set<Employee> employees;
+    @OneToOne
+    @JoinColumn(name = "createId")
+    @ApiModelProperty("记录填写人")
+    private Employee employee;
 }

@@ -21,4 +21,7 @@ public interface NursRecordRepository extends JpaRepository<NursRecord, Integer>
     @Query("select n from NursRecord n where n.person.id = ?1")
     Page<NursRecord> findNursRecordByPerson(int id, Pageable pageable);
 
+    @Query("select n from NursRecord n where n.employee.id = ?1")
+    Page<NursRecord> findNursRecordByEmployee(int id, Pageable pageable);
+
 }

@@ -13,4 +13,6 @@ public interface NursRecordService {
     Page<NursRecord> findRecordByProject(int id, int pageNum, int limit);
 
     Page<NursRecord> findRecordByPerson(int id, int pageNum, int limit);
+
+    Page<NursRecord> findRecordByEmployee(int id, int pageNum, int limit);
 }

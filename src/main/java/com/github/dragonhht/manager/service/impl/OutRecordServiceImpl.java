@@ -30,4 +30,14 @@ public class OutRecordServiceImpl extends BaseServiceImp<OutingRecord, Integer> 
         Page<OutingRecord> forms = outRecordRepository.findRecordByPerson(id, pageable);
         return forms;
     }
+
+    @Override
+    public Page<OutingRecord> findRecordByEmployee(int id, int pageNum, int limit) {
+        if (limit == 0) {
+            limit = DEFAULT_PAGE_SIZE;
+        }
+        Pageable pageable = new PageRequest(pageNum, limit);
+        Page<OutingRecord> forms = outRecordRepository.findRecordByEmployee(id, pageable);
+        return forms;
+    }
 }

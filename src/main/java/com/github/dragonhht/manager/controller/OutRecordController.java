@@ -26,4 +26,11 @@ public class OutRecordController extends BaseController<OutingRecord, Integer> {
         return outRecordService.findRecordByPerson(id, page, sizie);
     }
 
+    @GetMapping("/select/by/create/{id}")
+    public Page<OutingRecord> findRecordByCreate(@PathVariable("id") int id,
+                                                 @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+                                                 @RequestParam(name = "size", defaultValue = "0", required = false) int sizie) {
+        return outRecordService.findRecordByEmployee(id, page, sizie);
+    }
+
 }

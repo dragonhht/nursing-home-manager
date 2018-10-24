@@ -26,4 +26,11 @@ public class PayDetailsController extends BaseServiceImp<PayDetails, Integer> {
         return payDetailsService.findRecordByPerson(id, page, sizie);
     }
 
+    @GetMapping("/select/by/create/{id}")
+    public Page<PayDetails> findRecordByCreate(@PathVariable("id") int id,
+                                               @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+                                               @RequestParam(name = "size", defaultValue = "0", required = false) int sizie) {
+        return payDetailsService.findRecordByEmployee(id, page, sizie);
+    }
+
 }
