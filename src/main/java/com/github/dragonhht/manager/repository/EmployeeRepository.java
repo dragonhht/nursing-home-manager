@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @RepositoryRestResource(path = "employee")
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 }
