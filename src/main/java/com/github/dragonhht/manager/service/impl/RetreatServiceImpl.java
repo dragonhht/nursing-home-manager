@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Description.
@@ -31,6 +32,7 @@ public class RetreatServiceImpl extends BaseServiceImp<RetreatApply, Integer> im
         return forms;
     }
 
+    @Transactional
     @Override
     public boolean updateStatus(FormStatus status, int id) {
         boolean ok = false;
