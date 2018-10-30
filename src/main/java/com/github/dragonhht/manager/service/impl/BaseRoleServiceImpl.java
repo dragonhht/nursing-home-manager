@@ -15,13 +15,13 @@ import java.util.Set;
  * Date: 18-9-28
  */
 @Service
-public class BaseRoleServiceImpl extends BaseServiceImp<BaseRole, Long> implements BaseRoleService {
+public class BaseRoleServiceImpl extends BaseServiceImp<BaseRole, Integer> implements BaseRoleService {
 
     @Autowired
     private BaseRoleRepository baseRoleRepository;
 
     @Override
-    public Set<String> getRolesById(long id) throws Exception {
+    public Set<String> getRolesById(int id) throws Exception {
         return baseRoleRepository.findRolesById(id);
     }
 }

@@ -9,6 +9,6 @@ import java.util.Set;
  */
 public interface BaseRoleService {
 
-    Set<String> getRolesById(long id) throws Exception;
+    Set<String> getRolesById(int id) throws Exception;
 
 }

@@ -8,6 +8,7 @@ import com.github.dragonhht.manager.params.FormStatus;
 import com.github.dragonhht.manager.repository.*;
 import com.github.dragonhht.manager.util.BeanUtil;
 import com.github.dragonhht.manager.util.PasswordUtil;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class NursingHomeManagerApplicationTests {
 		/*List<BaseRole> roles = baseRoleRepository.findAll();
 		System.out.println(roles.get(0).getRole());*/
 //        System.out.println(baseRoleRepository.findPasswordById(2L));
-        baseRoleRepository.findRolesById(1L)
+        baseRoleRepository.findRolesById(1)
                 .forEach(System.out::println);
 	}
 
@@ -87,8 +88,7 @@ public class NursingHomeManagerApplicationTests {
 
 	@Test
 	public void beanTest() {
-		String s = BeanUtil.getField(new Family(), "roles").getName();
-        System.out.println(s);
+        System.out.println(PasswordUtil.getInstance().encryption("1234"));
 	}
 
 }

@@ -34,7 +34,7 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        Long id = (Long) principals.getPrimaryPrincipal();
+        int id = (Integer) principals.getPrimaryPrincipal();
         Set<String> roles = getRolesById(id);
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.setRoles(roles);
@@ -51,7 +51,7 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String userId = (String) token.getPrincipal();
-        long id = Long.parseLong(userId);
+        int id = Integer.parseInt(userId);
         String password = getPasswordById(id);
         if (password == null) {
             return null;
@@ -61,11 +61,11 @@ public class ShiroRealm extends AuthorizingRealm {
         return info;
     }
 
-    private String getPasswordById(long id) {
+    private String getPasswordById(int id) {
         return roleRepository.findPasswordById(id);
     }
 
-    private Set<String> getRolesById(long id) {
+    private Set<String> getRolesById(int id) {
         return roleRepository.findRolesById(id);
     }
 }
