@@ -2,6 +2,7 @@ package com.github.dragonhht.manager.model;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class WorkTable implements Serializable {
 
     @Id
     private Integer id;
+    @Column(length = 10000)
     private String file;
 
 }
