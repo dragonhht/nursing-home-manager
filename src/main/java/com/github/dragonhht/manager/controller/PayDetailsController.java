@@ -1,5 +1,6 @@
 package com.github.dragonhht.manager.controller;
 
+import com.github.dragonhht.manager.controller.base.BaseController;
 import com.github.dragonhht.manager.model.PayDetails;
 import com.github.dragonhht.manager.service.PayDetailsService;
 import com.github.dragonhht.manager.service.base.BaseServiceImp;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/payDetail")
-public class PayDetailsController extends BaseServiceImp<PayDetails, Integer> {
+public class PayDetailsController extends BaseController<PayDetails, Integer> {
 
     @Autowired
     private PayDetailsService payDetailsService;
