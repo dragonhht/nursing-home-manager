@@ -12,4 +12,6 @@ public interface OutRecordService {
 
     Page<OutingRecord> findRecordByPerson(int id, int pageNum, int limit);
 
+    Page<OutingRecord> findRecordByEmployee(int id, int pageNum, int limit);
+
 }

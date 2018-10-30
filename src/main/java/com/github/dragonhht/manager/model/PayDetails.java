@@ -40,4 +40,8 @@ public class PayDetails implements Serializable {
     @JoinColumn(name = "personId")
     @ApiModelProperty("老人")
     private Person person;
+    @OneToOne
+    @JoinColumn(name = "createId")
+    @ApiModelProperty("记录填写人")
+    private Employee employee;
 }

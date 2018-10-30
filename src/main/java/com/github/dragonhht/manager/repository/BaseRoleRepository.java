@@ -13,7 +13,7 @@ import java.util.Set;
  * Date: 18-9-22
  */
 @Repository
-public interface BaseRoleRepository extends JpaRepository<BaseRole, Long> {
+public interface BaseRoleRepository extends JpaRepository<BaseRole, Integer> {
 
     /**
      * 根据用户ID查询密码.
@@ -21,8 +21,8 @@ public interface BaseRoleRepository extends JpaRepository<BaseRole, Long> {
      * @return
      */
     @Query("select password from BaseRole where id = ?1")
-    String findPasswordById(long id);
+    String findPasswordById(int id);
 
     @Query(nativeQuery = true, value = "select role_id from user_role where user_id = ?1")
-    Set<String> findRolesById(long id);
+    Set<String> findRolesById(int id);
 }

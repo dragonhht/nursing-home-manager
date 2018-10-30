@@ -4,6 +4,7 @@ import com.github.dragonhht.manager.params.Code;
 import com.github.dragonhht.manager.util.ReturnDataUtils;
 import com.github.dragonhht.manager.vo.ReturnData;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -23,6 +24,9 @@ public class ControllerExceptionHandler {
         e.printStackTrace();
         if (e instanceof UnauthenticatedException) {
             return ReturnDataUtils.returnDate(Code.NOT_LOGIN, "请登录");
+        }
+        if (e instanceof IncorrectCredentialsException) {
+            return ReturnDataUtils.returnDate(Code.FAILED, "密码错误");
         }
         if (e instanceof UnknownAccountException) {
             return ReturnDataUtils.returnDate(Code.FAILED, "登录失败");

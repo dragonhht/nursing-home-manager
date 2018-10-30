@@ -42,7 +42,7 @@ public class CommonController {
     }
 
     @PostMapping("/login")
-    public ReturnData<String> login(Long userId, String password, String role) throws Exception {
+    public ReturnData<String> login(int userId, String password, String role) throws Exception {
         Subject subject = SecurityUtils.getSubject();
         PasswordUtil util = PasswordUtil.getInstance();
         //password = util.encryption(password);

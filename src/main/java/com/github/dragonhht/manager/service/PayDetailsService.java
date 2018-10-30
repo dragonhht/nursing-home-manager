@@ -12,4 +12,6 @@ public interface PayDetailsService {
 
     Page<PayDetails> findRecordByPerson(int id, int pageNum, int limit);
 
+    Page<PayDetails> findRecordByEmployee(int id, int pageNum, int limit);
+
 }

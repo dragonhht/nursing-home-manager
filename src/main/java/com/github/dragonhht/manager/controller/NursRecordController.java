@@ -33,4 +33,11 @@ public class NursRecordController extends BaseController<NursRecord, Integer> {
         return nursRecordService.findRecordByPerson(id, page, sizie);
     }
 
+    @GetMapping("/select/by/create/{id}")
+    public Page<NursRecord> findRecordByCreate(@PathVariable("id") int id,
+                                               @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+                                               @RequestParam(name = "size", defaultValue = "0", required = false) int sizie) {
+        return nursRecordService.findRecordByEmployee(id, page, sizie);
+    }
+
 }

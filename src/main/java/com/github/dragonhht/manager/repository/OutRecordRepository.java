@@ -18,4 +18,8 @@ public interface OutRecordRepository extends JpaRepository<OutingRecord, Integer
     @Query("select n from OutingRecord n where n.person.id = ?1")
     Page<OutingRecord> findRecordByPerson(int id, Pageable pageable);
 
+
+    @Query("select n from OutingRecord n where n.employee.id = ?1")
+    Page<OutingRecord> findRecordByEmployee(int id, Pageable pageable);
+
 }
