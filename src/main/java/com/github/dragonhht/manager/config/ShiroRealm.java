@@ -34,7 +34,7 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        int id = (Integer) principals.getPrimaryPrincipal();
+        int id = Integer.parseInt((String) principals.getPrimaryPrincipal());
         Set<String> roles = getRolesById(id);
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.setRoles(roles);

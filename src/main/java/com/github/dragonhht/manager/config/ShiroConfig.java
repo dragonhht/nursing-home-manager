@@ -10,6 +10,10 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.servlet.Filter;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Description.
  * User: huang
@@ -21,9 +25,16 @@ public class ShiroConfig {
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean  factory = new ShiroFilterFactoryBean();
+        Map<String, Filter> filterMap = new HashMap<>();
+        filterMap.put("jwt", new JWTFilter());
+        factory.setFilters(filterMap);
         factory.setSecurityManager(securityManager);
         factory.setLoginUrl("/common/notLogin");
         factory.setUnauthorizedUrl("/common/unauthorize");
+        Map<String, String> filterRuleMap = new HashMap<>();
+        // 所有请求通过我们自己的JWT Filter
+        filterRuleMap.put("/**", "jwt");
+        factory.setFilterChainDefinitionMap(filterRuleMap);
         return factory;
     }
 

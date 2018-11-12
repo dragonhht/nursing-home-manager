@@ -8,6 +8,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -40,7 +41,7 @@ public class JWTUtils {
             token = JWT.create()
                     .withIssuer(id)
                     .withIssuedAt(new Date(issued))
-                    .withSubject(subject)
+                    .withSubject(Base64Utils.encodeToString(subject.getBytes()))
                     .withArrayClaim("roles", tokenRoles)
                     // .withExpiresAt(new Date(issued + ConfigCode.EXP_TIME))
                     .sign(algorithm);

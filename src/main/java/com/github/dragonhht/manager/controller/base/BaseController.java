@@ -1,10 +1,7 @@
 package com.github.dragonhht.manager.controller.base;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.dragonhht.manager.model.ApplyForm;
 import com.github.dragonhht.manager.params.Code;
 import com.github.dragonhht.manager.service.base.BaseService;
-import com.github.dragonhht.manager.util.BeanUtil;
 import com.github.dragonhht.manager.util.ReturnDataUtils;
 import com.github.dragonhht.manager.vo.ReturnData;
 import io.swagger.annotations.*;
@@ -13,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Method;
 import java.util.Optional;
 
 /**
@@ -66,8 +62,8 @@ public abstract class BaseController<T, R> {
     }
 
     @RequiresRoles("EMPLOYEE")
-    @DeleteMapping
-    public ReturnData<Boolean> delete(R id) throws Exception {
+    @DeleteMapping("/{id}")
+    public ReturnData<Boolean> delete(@PathVariable("id") R id) throws Exception {
         baseService.delete(id);
         return ReturnDataUtils.returnDate(Code.SUCCESS, true);
     }

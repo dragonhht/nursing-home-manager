@@ -50,7 +50,7 @@ public class CommonController {
         subject.login(usernamePasswordToken);
         long times = System.currentTimeMillis();
         Set<String> roles = baseRoleService.getRolesById(userId);
-        String token = jwtUtils.createTocken(String.valueOf(userId), times, null, roles);
+        String token = jwtUtils.createTocken(String.valueOf(userId), times, password, roles);
         return ReturnDataUtils.returnDate(Code.SUCCESS, token);
 
     }
