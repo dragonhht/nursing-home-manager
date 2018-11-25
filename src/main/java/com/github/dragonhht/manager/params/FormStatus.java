@@ -13,6 +13,6 @@ public enum FormStatus {
     /** 未通过审核. */
     NOT_PASS,
     /** 草稿。 */
-    DRAFT;
+    DRAFT
 
 }

@@ -1,6 +1,7 @@
 package com.github.dragonhht.manager.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.dragonhht.manager.params.FormStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -42,5 +43,8 @@ public class BedRecord implements Serializable {
     @JoinColumn(name = "personId")
     @ApiModelProperty("老人")
     private Person person;
-
+    /** 是否为预约. */
+    private boolean isReserve;
+    /** 为预约时的状态. */
+    private FormStatus status = FormStatus.PENDING;
 }

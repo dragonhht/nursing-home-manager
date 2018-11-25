@@ -1,9 +1,6 @@
 package com.github.dragonhht.manager;
 
-import com.github.dragonhht.manager.model.ApplyForm;
-import com.github.dragonhht.manager.model.Employee;
-import com.github.dragonhht.manager.model.Family;
-import com.github.dragonhht.manager.model.Role;
+import com.github.dragonhht.manager.model.*;
 import com.github.dragonhht.manager.params.FormStatus;
 import com.github.dragonhht.manager.repository.*;
 import com.github.dragonhht.manager.util.BeanUtil;
@@ -16,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Base64Utils;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,6 +33,12 @@ public class NursingHomeManagerApplicationTests {
     private RoleRepository roleRepository;
 	@Autowired
 	private ApplyFormRepository applyFormRepository;
+	@Autowired
+	private PayDetailsRepository payDetailsRepository;
+	@Autowired
+	private BedRecordRepository bedRecordRepository;
+	@Autowired
+	private BedRepository bedRepository;
 
 	@Test
 	public void contextLoads() {
@@ -91,4 +95,33 @@ public class NursingHomeManagerApplicationTests {
         System.out.println(PasswordUtil.getInstance().encryption("1234"));
 	}
 
+	@Test
+	public void test2() {
+		Person person = new Person();
+		person.setAge(80);
+		person.setName("ceshi");
+		person.setPhysical("健康");
+		personRepository.save(person);
+		Bed bed = new Bed();
+		bed.setDouble(false);
+		bed.setPrice(300);
+		bed.setUsed(false);
+		bed.setId("302");
+		bedRepository.save(bed);
+		BedRecord record = new BedRecord();
+		record.setBed(bed);
+		record.setEndDate(new Date());
+		record.setPerson(person);
+		record.setReserve(true);
+		record.setStartDate(new Date());
+		record.setStatus(FormStatus.PENDING);
+		bedRecordRepository.save(record);
+		PayDetails details = new PayDetails();
+		details.setPerson(person);
+		details.setPrice(233);
+		details.setStatus(false);
+		details.setTime(new Date());
+		details.setType("NURES");
+		payDetailsRepository.save(details);
+	}
 }
