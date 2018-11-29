@@ -32,7 +32,7 @@ public class RetreatController extends BaseController<RetreatApply, Integer> {
      * @param size
      * @return
      */
-    @RequiresRoles("EMPLOYEE")
+    //@RequiresRoles("EMPLOYEE")
     @GetMapping("/select")
     public Page<RetreatApply> selectFormByStatus(@RequestParam("status") FormStatus status,
                                               @RequestParam(name = "page", defaultValue = "0", required = false) int page,
@@ -40,7 +40,7 @@ public class RetreatController extends BaseController<RetreatApply, Integer> {
         return  retreatService.findApplyFormsByStatus(page, size, status);
     }
 
-    @RequiresRoles("EMPLOYEE")
+    //@RequiresRoles("EMPLOYEE")
     @PostMapping("/status/update/")
     public ReturnData<Boolean> updateStatus(@RequestParam("status") FormStatus status, @RequestParam("id") int id) {
         boolean ok = retreatService.updateStatus(status, id);

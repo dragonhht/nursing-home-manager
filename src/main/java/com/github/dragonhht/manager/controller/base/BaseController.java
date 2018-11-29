@@ -61,7 +61,7 @@ public abstract class BaseController<T, R> {
         return ReturnDataUtils.returnDate(Code.SUCCESS, data);
     }
 
-    @RequiresRoles("EMPLOYEE")
+    //@RequiresRoles("EMPLOYEE")
     @DeleteMapping("/{id}")
     public ReturnData<Boolean> delete(@PathVariable("id") R id) throws Exception {
         baseService.delete(id);
