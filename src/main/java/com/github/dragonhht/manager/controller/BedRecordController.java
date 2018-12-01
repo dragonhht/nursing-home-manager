@@ -23,6 +23,13 @@ public class BedRecordController extends BaseController<BedRecord, Integer> {
     @Autowired
     private BedRecordService bedRecordService;
 
+    /**
+     * 根据编号查询床位记录.
+     * @param id
+     * @param page
+     * @param size
+     * @return
+     */
     @GetMapping("/select/by/bed/{id}")
     public Page<BedRecord> findBedRecordByBed(@PathVariable("id") String id,
                                               @RequestParam(name = "page", defaultValue = "0", required = false) int page,

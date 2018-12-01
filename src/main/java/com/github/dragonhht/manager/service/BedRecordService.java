@@ -12,6 +12,20 @@ import org.springframework.data.domain.Page;
  */
 public interface BedRecordService {
 
+    /***
+     * 通过床位查询床位记录
+     * @param id
+     * @param pageNum
+     * @param limit
+     * @return
+     */
     Page<BedRecord> findBedRecordByBed(String id, int pageNum, int limit);
+
+    /**
+     * 更新审核状态
+     * @param status
+     * @param id
+     * @return
+     */
     boolean updateStatus(FormStatus status, int id);
 }

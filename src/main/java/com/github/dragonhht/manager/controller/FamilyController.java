@@ -27,6 +27,12 @@ public class FamilyController extends BaseController<Family, Integer> {
     @Autowired
     private FamilyService familyService;
 
+    /**
+     * 保存家属信息.
+     * @param family
+     * @return
+     * @throws Exception
+     */
     @Override
     @PostMapping
     public ReturnData<Family> save(@RequestBody Family family) throws Exception {

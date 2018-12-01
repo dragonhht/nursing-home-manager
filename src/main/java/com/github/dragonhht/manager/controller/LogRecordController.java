@@ -19,6 +19,13 @@ public class LogRecordController extends BaseController<LogRecord, Integer> {
     @Autowired
     private LogRecordService logRecordService;
 
+    /**
+     * 根据员工编号查询日志.
+     * @param id
+     * @param page
+     * @param sizie
+     * @return
+     */
     @GetMapping("/select/by/employee/{id}")
     public Page<LogRecord> findLogRecordByEmployee(@PathVariable("id") int id,
                                                    @RequestParam(name = "page", defaultValue = "0", required = false) int page,
@@ -26,6 +33,13 @@ public class LogRecordController extends BaseController<LogRecord, Integer> {
         return logRecordService.findLogRecordByEmployee(id, page, sizie);
     }
 
+    /**
+     * 根据老人编号查询日志记录.
+     * @param id
+     * @param page
+     * @param sizie
+     * @return
+     */
     @GetMapping("/select/by/person/{id}")
     public Page<LogRecord> findLogRecordByPerson(@PathVariable("id") int id,
                                                  @RequestParam(name = "page", defaultValue = "0", required = false) int page,

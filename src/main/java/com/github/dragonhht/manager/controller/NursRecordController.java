@@ -19,6 +19,13 @@ public class NursRecordController extends BaseController<NursRecord, Integer> {
     @Autowired
     private NursRecordService nursRecordService;
 
+    /**
+     * 根据护理项目编号获取护理记录.
+     * @param id
+     * @param page
+     * @param sizie
+     * @return
+     */
     @GetMapping("/select/by/nures/{id}")
     public Page<NursRecord> findRecordByEmployee(@PathVariable("id") int id,
                                                     @RequestParam(name = "page", defaultValue = "0", required = false) int page,
@@ -26,6 +33,13 @@ public class NursRecordController extends BaseController<NursRecord, Integer> {
         return nursRecordService.findRecordByProject(id, page, sizie);
     }
 
+    /**
+     * 根据老人编号获取护理记录
+     * @param id
+     * @param page
+     * @param sizie
+     * @return
+     */
     @GetMapping("/select/by/person/{id}")
     public Page<NursRecord> findRecordByPerson(@PathVariable("id") int id,
                                                  @RequestParam(name = "page", defaultValue = "0", required = false) int page,
@@ -33,6 +47,13 @@ public class NursRecordController extends BaseController<NursRecord, Integer> {
         return nursRecordService.findRecordByPerson(id, page, sizie);
     }
 
+    /**
+     * 根据记录上传者查询护理记录.
+     * @param id
+     * @param page
+     * @param sizie
+     * @return
+     */
     @GetMapping("/select/by/create/{id}")
     public Page<NursRecord> findRecordByCreate(@PathVariable("id") int id,
                                                @RequestParam(name = "page", defaultValue = "0", required = false) int page,

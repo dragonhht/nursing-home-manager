@@ -27,7 +27,7 @@ public class PersonController extends BaseController<Person, Integer> {
     private PersonService personService;
 
     /**
-     * 通过姓名查找.
+     * 通过姓名查找老人.
      * @param name
      * @return
      */

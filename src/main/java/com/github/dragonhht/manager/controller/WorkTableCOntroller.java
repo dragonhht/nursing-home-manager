@@ -20,12 +20,21 @@ public class WorkTableCOntroller {
     @Autowired
     private WorkTableService workTableService;
 
+    /**
+     * 上传值班表
+     * @param workTable
+     * @return
+     */
     @PostMapping("")
     public ReturnData<Integer> save(@RequestBody WorkTable workTable) {
         int id = workTableService.save(workTable);
         return ReturnDataUtils.returnDate(Code.SUCCESS, id);
     }
 
+    /**
+     * 获取值班表。
+     * @return
+     */
     @GetMapping()
     public String get() {
         return workTableService.getMsg();

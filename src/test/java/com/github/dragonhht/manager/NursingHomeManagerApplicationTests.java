@@ -124,4 +124,13 @@ public class NursingHomeManagerApplicationTests {
 		details.setType("NURES");
 		payDetailsRepository.save(details);
 	}
+
+	@Test
+	public void addEmployee() {
+		Employee employee = new Employee();
+		employee.setAddress("中国");
+		employee.setName("测试2");
+		employee.setPassword("123");
+		employeeRepository.save(employee);
+	}
 }

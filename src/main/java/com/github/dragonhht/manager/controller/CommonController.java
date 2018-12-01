@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Set;
 
 /**
- * Description.
+ * 权限相关.
  * User: huang
  * Date: 18-9-21
  */
@@ -31,16 +31,32 @@ public class CommonController {
     @Autowired
     private BaseRoleService baseRoleService;
 
+    /**
+     * 未登录.
+     * @return
+     */
     @GetMapping("/notLogin")
     public ReturnData<String> notLogin() {
         return ReturnDataUtils.returnDate(Code.NOT_LOGIN, "not login");
     }
 
+    /**
+     * 未授权
+     * @return
+     */
     @GetMapping("/unauthorize")
     public ReturnData<String> unauthorize() {
         return ReturnDataUtils.returnDate(Code.UNAUTHORIZE, "无权限访问");
     }
 
+    /**
+     * 登录.
+     * @param userId
+     * @param password
+     * @param role
+     * @return
+     * @throws Exception
+     */
     @PostMapping("/login")
     public ReturnData<String> login(int userId, String password, String role) throws Exception {
         Subject subject = SecurityUtils.getSubject();

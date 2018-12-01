@@ -32,6 +32,16 @@ public class PayDetailsServiceImpl extends BaseServiceImp<PayDetails, Integer> i
     }
 
     @Override
+    public Page<PayDetails> findRecordByPersonName(String name, int pageNum, int limit) {
+        if (limit == 0) {
+            limit = DEFAULT_PAGE_SIZE;
+        }
+        Pageable pageable = new PageRequest(pageNum, limit);
+        Page<PayDetails> forms = payDetailsRepository.findRecordByPersonName(name, pageable);
+        return forms;
+    }
+
+    @Override
     public Page<PayDetails> findRecordByEmployee(int id, int pageNum, int limit) {
         if (limit == 0) {
             limit = DEFAULT_PAGE_SIZE;

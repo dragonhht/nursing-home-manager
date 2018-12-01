@@ -32,7 +32,6 @@ public class RetreatController extends BaseController<RetreatApply, Integer> {
      * @param size
      * @return
      */
-    //@RequiresRoles("EMPLOYEE")
     @GetMapping("/select")
     public Page<RetreatApply> selectFormByStatus(@RequestParam("status") FormStatus status,
                                               @RequestParam(name = "page", defaultValue = "0", required = false) int page,
@@ -40,13 +39,26 @@ public class RetreatController extends BaseController<RetreatApply, Integer> {
         return  retreatService.findApplyFormsByStatus(page, size, status);
     }
 
-    //@RequiresRoles("EMPLOYEE")
+    /**
+     *
+     * 更新审核状态.
+     * @param status
+     * @param id
+     * @return
+     */
     @PostMapping("/status/update/")
     public ReturnData<Boolean> updateStatus(@RequestParam("status") FormStatus status, @RequestParam("id") int id) {
         boolean ok = retreatService.updateStatus(status, id);
         return ReturnDataUtils.returnDate(Code.SUCCESS, ok);
     }
 
+    /**
+     * 根据老人编号获取退住申请。
+     * @param id
+     * @param page
+     * @param sizie
+     * @return
+     */
     @GetMapping("/select/by/person/{id}")
     public Page<RetreatApply> findRecordByPerson(@PathVariable("id") int id,
                                                @RequestParam(name = "page", defaultValue = "0", required = false) int page,
