@@ -2,6 +2,7 @@ package com.github.dragonhht.manager.controller;
 
 import com.github.dragonhht.manager.controller.base.BaseController;
 import com.github.dragonhht.manager.model.Family;
+import com.github.dragonhht.manager.model.Role;
 import com.github.dragonhht.manager.params.Code;
 import com.github.dragonhht.manager.service.FamilyService;
 import com.github.dragonhht.manager.util.PasswordUtil;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Description.
@@ -38,6 +42,10 @@ public class FamilyController extends BaseController<Family, Integer> {
     public ReturnData<Family> save(@RequestBody Family family) throws Exception {
         PasswordUtil util = PasswordUtil.getInstance();
         family.setPassword(util.encryption(family.getPassword()));
+        Role role = new Role("EMPLOYEE");
+        Set<Role> roles = new HashSet<>();
+        roles.add(role);
+        family.setRoles(roles);
         Family data = familyService.save(family);
         return ReturnDataUtils.returnDate(Code.SUCCESS, data);
     }

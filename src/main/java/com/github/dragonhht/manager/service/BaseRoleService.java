@@ -1,5 +1,7 @@
 package com.github.dragonhht.manager.service;
 
+import com.github.dragonhht.manager.model.BaseRole;
+
 import java.util.Set;
 
 /**
@@ -15,5 +17,7 @@ public interface BaseRoleService {
      * @throws Exception
      */
     Set<String> getRolesById(int id) throws Exception;
+
+    BaseRole getByPhone(String Phone);
 
 }

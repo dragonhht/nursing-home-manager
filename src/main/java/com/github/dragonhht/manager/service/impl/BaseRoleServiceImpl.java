@@ -24,4 +24,9 @@ public class BaseRoleServiceImpl extends BaseServiceImp<BaseRole, Integer> imple
     public Set<String> getRolesById(int id) throws Exception {
         return baseRoleRepository.findRolesById(id);
     }
+
+    @Override
+    public BaseRole getByPhone(String phone) {
+        return baseRoleRepository.findBaseRoleByPhone(phone);
+    }
 }

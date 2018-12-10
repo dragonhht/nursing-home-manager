@@ -24,12 +24,12 @@ import java.util.Set;
 public class Family extends BaseRole implements Serializable {
 
     private static final long serialVersionUID = 1304993116620662268L;
-    @ApiModelProperty("姓名")
+    /*@ApiModelProperty("姓名")
     private String name;
     @ApiModelProperty("手机号")
     private String phone;
     @ApiModelProperty("地址")
-    private String address;
+    private String address;*/
     /** 老人. */
 /*    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "familyId")

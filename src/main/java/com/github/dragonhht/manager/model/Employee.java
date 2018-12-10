@@ -21,11 +21,5 @@ import java.util.Set;
 public class Employee extends BaseRole implements Serializable {
 
     private static final long serialVersionUID = 1304993116620662268L;
-    @ApiModelProperty("姓名")
-    private String name;
-    @ApiModelProperty("手机号码")
-    private String phone;
-    @ApiModelProperty("住址")
-    private String address;
 
 }

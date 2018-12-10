@@ -38,4 +38,11 @@ public class BaseRole implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "perssionId")})
     @ApiModelProperty("权限")
     private Set<Perssion> perssions;
+
+    @ApiModelProperty("姓名")
+    private String name;
+    @ApiModelProperty("手机号码")
+    private String phone;
+    @ApiModelProperty("住址")
+    private String address;
 }

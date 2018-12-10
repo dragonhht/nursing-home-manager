@@ -25,4 +25,7 @@ public interface BaseRoleRepository extends JpaRepository<BaseRole, Integer> {
 
     @Query(nativeQuery = true, value = "select role_id from user_role where user_id = ?1")
     Set<String> findRolesById(int id);
+
+    @Query("select u from BaseRole u where u.phone = ?1")
+    BaseRole findBaseRoleByPhone(String phone);
 }
