@@ -19,9 +19,12 @@ public class InitController {
 
     @RequestMapping("/init")
     public boolean init() {
-        roleRepository.save(new Role("USER"));
-        roleRepository.save(new Role("ADMIN"));
-        roleRepository.save(new Role("EMPLOYEE"));
+        // USER
+        roleRepository.save(new Role("3"));
+        // ADMIN
+        roleRepository.save(new Role("1"));
+        // EMPLOYEE
+        roleRepository.save(new Role("2"));
         return true;
     }
 

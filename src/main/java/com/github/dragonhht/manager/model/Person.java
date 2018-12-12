@@ -35,7 +35,7 @@ public class Person implements Serializable {
     @ApiModelProperty("身体状况")
     private String physical;
     /** 家属. */
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "familyId")
     @ApiModelProperty("家属")
     private Family family;

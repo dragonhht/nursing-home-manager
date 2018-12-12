@@ -41,4 +41,14 @@ public class Family extends BaseRole implements Serializable {
     @JsonIgnore
     @ApiModelProperty("提交的申请")
     private Set<ApplyForm> applys;*/
+
+    // 方便接收老人信息,(不做映射关系)
+    @Transient
+    private String personName;
+    @Transient
+    private String personSex;
+    @Transient
+    private int personAge;
+    @Transient
+    private String personPhysical;
 }
