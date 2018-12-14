@@ -17,4 +17,6 @@ public interface PersonService {
      */
     List<Person> getPersonByName(String name);
 
+    List<Person> getPersonByFamily(int id);
+
 }

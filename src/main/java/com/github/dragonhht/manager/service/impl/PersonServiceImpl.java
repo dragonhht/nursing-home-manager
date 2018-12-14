@@ -24,4 +24,9 @@ public class PersonServiceImpl extends BaseServiceImp<Person, Integer> implement
     public List<Person> getPersonByName(String name) {
         return personRepository.getPersonByName(name);
     }
+
+    @Override
+    public List<Person> getPersonByFamily(int id) {
+        return personRepository.findByFamily(id);
+    }
 }
